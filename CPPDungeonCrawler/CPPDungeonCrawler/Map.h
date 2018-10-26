@@ -6,9 +6,11 @@ class Map
 {
 public:
 	Map();
+	Map(int width, int height);
 	~Map();
+	void Generate();
 	
-	int Height;
 	int Width;
+	int Height; 
 	Room rooms[400];
 };

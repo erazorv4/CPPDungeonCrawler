@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.h"
+#include "Dungeon.h"
 
 class GameController
 {
@@ -7,6 +8,7 @@ public:
 	GameController();
 	~GameController();
 
-	Map map;
+	Dungeon dungeon;
+	Map currentMap;
 };
 

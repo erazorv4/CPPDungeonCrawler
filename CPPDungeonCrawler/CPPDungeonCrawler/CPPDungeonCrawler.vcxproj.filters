@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{65a865d3-4216-4fb9-99c7-afe334676d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Items">
+      <UniqueIdentifier>{b8891829-f4f4-4252-9285-fd3d06bafcb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controllers">
+      <UniqueIdentifier>{95fc3436-d2c3-476f-a311-0c4498f7e736}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="UsableItem.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipableItem.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Armor.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Grenade.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="EndRoom.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="StartRoom.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPPDungeonCrawler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="UsableItem.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipableItem.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Armor.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Grenade.cpp">
+      <Filter>Models\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="EndRoom.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="StartRoom.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="GameController.cpp">
+      <Filter>Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,8 +1,10 @@
 #pragma once
+
 class Enemy
 {
 public:
 	Enemy();
+	Enemy(char name[20], int level, int health, int maxhealth, int damage[2], int attackchance, int defendchance);
 	~Enemy();
 	
 	char Name[20];

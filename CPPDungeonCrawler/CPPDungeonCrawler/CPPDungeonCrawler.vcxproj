@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="Dungeon.h" />
     <ClInclude Include="EndRoom.h" />
     <ClInclude Include="Enemies.h" />
     <ClInclude Include="Enemy.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="StartRoom.h" />
     <ClInclude Include="stdafx.h" />
@@ -168,6 +170,7 @@
   <ItemGroup>
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="CPPDungeonCrawler.cpp" />
+    <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="EndRoom.cpp" />
     <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -178,6 +181,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="StartRoom.cpp" />
     <ClCompile Include="stdafx.cpp">

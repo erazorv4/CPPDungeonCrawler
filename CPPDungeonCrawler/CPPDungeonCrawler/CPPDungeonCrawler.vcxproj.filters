@@ -22,6 +22,9 @@
     <Filter Include="Controllers">
       <UniqueIdentifier>{95fc3436-d2c3-476f-a311-0c4498f7e736}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{3793cd18-b568-4637-ad32-60b669095a3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -73,7 +76,13 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +135,13 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>Models</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

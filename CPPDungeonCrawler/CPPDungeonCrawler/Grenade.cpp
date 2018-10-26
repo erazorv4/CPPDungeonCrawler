@@ -10,3 +10,7 @@ Grenade::Grenade()
 Grenade::~Grenade()
 {
 }
+
+void Grenade::Use()
+{
+}

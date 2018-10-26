@@ -1,5 +1,6 @@
 #pragma once
-#include <string>
+
+#include "Room.h"
 
 class Hero
 {
@@ -15,5 +16,8 @@ public:
 	int AttackChance;
 	int DefendChance;
 
+	int X;
+	int Y;
+	Room CurrentRoom;
 };
 

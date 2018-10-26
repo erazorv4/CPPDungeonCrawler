@@ -5,6 +5,7 @@ class StartRoom :
 {
 public:
 	StartRoom();
+	StartRoom(int x, int y);
 	~StartRoom();
 };
 

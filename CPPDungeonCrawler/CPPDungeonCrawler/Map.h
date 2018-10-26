@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Room.h"
+#include "StartRoom.h"
+#include "EndRoom.h"
+#include <optional>
 
 class Map
 {
@@ -9,8 +12,12 @@ public:
 	Map(int width, int height);
 	~Map();
 	void Generate();
+
+	Room CheckRoomExists(int x, int y);
 	
 	int Width;
 	int Height; 
-	Room rooms[400];
+	std::optional<Room> Rooms[400];
+	StartRoom startRoom;
+	EndRoom endRoom;
 };

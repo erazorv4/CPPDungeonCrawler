@@ -4,6 +4,13 @@
 
 StartRoom::StartRoom()
 {
+
+}
+
+StartRoom::StartRoom(int x, int y)
+{
+	X = x;
+	Y = y;
 }
 
 

@@ -4,7 +4,7 @@
 
 GameController::GameController()
 {
-
+	currentMap = Map(5, 5);
 }
 
 

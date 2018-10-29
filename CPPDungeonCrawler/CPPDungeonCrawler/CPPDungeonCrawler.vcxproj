@@ -154,7 +154,6 @@
     <ClInclude Include="ArrayHelper.h" />
     <ClInclude Include="CPPDungeonCrawler.h" />
     <ClInclude Include="Dungeon.h" />
-    <ClInclude Include="EndRoom.h" />
     <ClInclude Include="Enemies.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EquipableItem.h" />
@@ -166,7 +165,6 @@
     <ClInclude Include="Potion.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="StartRoom.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UsableItem.h" />
@@ -177,7 +175,6 @@
     <ClCompile Include="ArrayHelper.cpp" />
     <ClCompile Include="CPPDungeonCrawler.cpp" />
     <ClCompile Include="Dungeon.cpp" />
-    <ClCompile Include="EndRoom.cpp" />
     <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EquipableItem.cpp" />
@@ -189,7 +186,6 @@
     <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Room.cpp" />
-    <ClCompile Include="StartRoom.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

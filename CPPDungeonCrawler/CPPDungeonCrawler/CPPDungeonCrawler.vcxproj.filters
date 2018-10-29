@@ -63,12 +63,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="EndRoom.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="StartRoom.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="GameController.h">
       <Filter>Controllers</Filter>
     </ClInclude>
@@ -126,12 +120,6 @@
       <Filter>Models\Items</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="EndRoom.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="StartRoom.cpp">
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="GameController.cpp">

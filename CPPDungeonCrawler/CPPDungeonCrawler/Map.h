@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Room.h"
-#include "StartRoom.h"
-#include "EndRoom.h"
 #include <optional>
 
 class Map
@@ -16,13 +14,12 @@ public:
 	void InsertRoomIntoRooms(Room room);
 
 	int* GetSidesList(int &amountOfRooms, Room currentRoom);
+	Room GetStartRoom();
 
-
-	Room CheckRoomExists(int x, int y);
+	 
+	Room* CheckRoomExists(int x, int y);
 	
 	int Width;
 	int Height; 
 	std::optional<Room> Rooms[400];
-	StartRoom startRoom;
-	EndRoom endRoom;
 };

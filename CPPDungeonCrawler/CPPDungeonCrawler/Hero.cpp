@@ -16,3 +16,13 @@ Hero::Hero(char name[20], int level, int health, int maxhealth, int exp, int att
 Hero::~Hero()
 {
 }
+
+void Hero::Move(int direction)
+{
+	if (CurrentRoom.Rooms[direction])
+	{
+		CurrentRoom = *CurrentRoom.Rooms[direction];
+		X = CurrentRoom.X;
+		Y = CurrentRoom.Y;
+	}
+}

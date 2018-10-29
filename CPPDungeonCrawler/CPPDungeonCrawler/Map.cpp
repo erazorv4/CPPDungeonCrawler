@@ -2,8 +2,6 @@
 #include "Map.h"
 #include "Random.h"
 #include "Room.h"
-#include "StartRoom.h"
-#include "EndRoom.h"
 #include <iostream>
 #include "ArrayHelper.h"
 #include "GameController.h"
@@ -37,41 +35,44 @@ void Map::Generate()
 
 	Random r = Random();
 
-	int startingX = r.Generate(1, Width);
-	int startingY = r.Generate(1, Height);
+	int startingX = 5;//r.Generate(1, Width);
+	int startingY = 5;//r.Generate(1, Height);
 	int currentX = startingX;
 	int currentY = startingY;
 
-	startRoom = StartRoom(startingX, startingY);
+	Room startRoom = Room(startingX, startingY);
 	Rooms[0] = startRoom;
 
 	int amountOfRooms = 4;//r.Generate(1, 4);
-	int* sidesList = GetSidesList(amountOfRooms, Rooms[0].value());
+	int* sidesList = GetSidesList(amountOfRooms, startRoom);
 
 	for (int i = 0; i < amountOfRooms; i++)
 	{
+		currentX = startRoom.X;
+		currentY = startRoom.Y;
 		switch (sidesList[i])
 		{
 		case 0:
-			currentY = Rooms[0].value().Y - 1;
+			currentY = startRoom.Y - 1;
 			break;
 		case 1:
-			currentX = Rooms[0].value().X + 1;
+			currentX = startRoom.X + 1;
 			break;
 		case 2:
-			currentY = Rooms[0].value().Y + 1;
+			currentY = startRoom.Y + 1;
 			break;
 		case 3:
-			currentX = Rooms[0].value().X - 1;
+			currentX = startRoom.X - 1;
 			break;
 		default:
 			break;
 		}
-		Room nextRoom = Room(currentX, currentY);
-		Rooms[0].value().Rooms[sidesList[i]] = &nextRoom;
-		InsertRoomIntoRooms(nextRoom);
+		Room* nextRoom = new Room(currentX, currentY);
+		startRoom.Rooms[sidesList[i]] = nextRoom;
+		InsertRoomIntoRooms(*nextRoom);
 	}
 
+	Rooms[0] = startRoom;
 
 	// main generation loop
 	for (int i = 1; i < Width * Height; i++)
@@ -104,16 +105,16 @@ void Map::Generate()
 			default:
 				break;
 			}
-			Room nextRoom = CheckRoomExists(currentX, currentY);
-			if (nextRoom.X != 0 && nextRoom.Y != 0)
+			Room* nextRoom = CheckRoomExists(currentX, currentY);
+			if (nextRoom->X != 0 && nextRoom->Y != 0)
 			{
-				Rooms[i].value().Rooms[sidesList[t]] = &nextRoom;
+				Rooms[i].value().Rooms[sidesList[t]] = nextRoom;
 			}
 			else
 			{
-				nextRoom = Room(currentX, currentY);
-				Rooms[i].value().Rooms[sidesList[t]] = &nextRoom;
-				InsertRoomIntoRooms(nextRoom);
+				nextRoom = new Room(currentX, currentY);
+				Rooms[i].value().Rooms[sidesList[t]] = nextRoom;
+				InsertRoomIntoRooms(*nextRoom);
 			}
 		}
 
@@ -188,15 +189,20 @@ int* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
 	return sidesList;
 }
 
-Room Map::CheckRoomExists(int x, int y)
+Room Map::GetStartRoom()
+{
+	return Rooms[0].value();
+}
+
+Room* Map::CheckRoomExists(int x, int y)
 {
 	if (x < 1 || x > Width)
 	{
-		return Room(0, 0);
+		return new Room(0, 0);
 	}
 	if (y < 1 || y > Height)
 	{
-		return Room(0, 0);
+		return new Room(0, 0);
 	}
 
 	for (int i = 0; i < Width * Height; i++)
@@ -205,13 +211,13 @@ Room Map::CheckRoomExists(int x, int y)
 		{
 			if (Rooms[i].value().X == x && Rooms[i].value().Y == y)
 			{
-				return Rooms[i].value();
+				return &Rooms[i].value();
 			}
 		}
 		else
 		{
-			return Room(0, 0);
+			return new Room(0, 0);
 		}
 	}
-	return Room(0, 0);
+	return new Room(0, 0);
 }

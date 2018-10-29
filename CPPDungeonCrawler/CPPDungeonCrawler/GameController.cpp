@@ -6,9 +6,9 @@
 GameController::GameController()
 {
 	currentMap = Map(10, 10);
-	hero.X = currentMap.startRoom.X;
-	hero.Y = currentMap.startRoom.Y;
-
+	hero.X = currentMap.GetStartRoom().X;
+	hero.Y = currentMap.GetStartRoom().Y;
+	hero.CurrentRoom = currentMap.GetStartRoom();
 	DisplayMap();
 
 }
@@ -29,7 +29,7 @@ void GameController::DisplayMap()
 		std::cout << "|";
 		for (int x = 1; x <= currentMap.Width; x++)
 		{
-			Room currentRoom = currentMap.CheckRoomExists(x, y);
+			Room currentRoom = *currentMap.CheckRoomExists(x, y);
 			if (currentRoom.X != 0 && currentRoom.Y != 0 && currentRoom.Visited != false)
 			{
 				if (hero.X == currentRoom.X && hero.Y == currentRoom.Y)
@@ -53,4 +53,5 @@ void GameController::DisplayMap()
 
 void GameController::MoveHero(int Direction)
 {
+	hero.Move(Direction);
 }

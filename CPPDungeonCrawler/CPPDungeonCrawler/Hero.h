@@ -9,6 +9,8 @@ public:
 	Hero(char name[20], int level, int health, int maxhealth, int exp, int attackchance, int defendchance);
 	~Hero();
 
+	void Move(int direction);
+
 	char Name[20];
 	int Level;
 	int Health;

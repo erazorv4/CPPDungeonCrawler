@@ -16,3 +16,8 @@ Room::Room(int x, int y)
 Room::~Room()
 {
 }
+
+Room* Room::GetAdjacentRoom(int side)
+{
+	return Rooms[side];
+}

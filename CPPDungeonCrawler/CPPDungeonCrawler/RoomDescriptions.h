@@ -29,7 +29,7 @@ private:
 	static State GetRandomState();
 	static Furniture GetRandomFurniture();
 
-	static char* ToString(Size size);
-	static char* ToString(State state);
-	static char* ToString(Furniture furniture);
+	static void ToString(char* outstr, Size size);
+	static void ToString(char* outstr, State state);
+	static void ToString(char* outstr, Furniture furniture);
 };

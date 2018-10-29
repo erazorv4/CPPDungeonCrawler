@@ -4,9 +4,12 @@
 
 char* RoomDescriptions::GetRandomDescription()
 {
-	const char* size = ToString(GetRandomSize());
-	const char* state = ToString(GetRandomState());
-	const char* furniture = ToString(GetRandomFurniture());
+	char size[13]; 
+	ToString(size, GetRandomSize());
+	char state[10];
+	ToString(state, GetRandomState());
+	char furniture[35];
+	ToString(furniture, GetRandomFurniture());
 
 	char description[150] = "You take a look around the "; //27
 	strcat_s(description, state);
@@ -74,68 +77,52 @@ RoomDescriptions::Furniture RoomDescriptions::GetRandomFurniture()
 	}
 }
 
-char* RoomDescriptions::ToString(Size size)
+void RoomDescriptions::ToString(char* outstr, Size size)
 {
 	switch (size)
 	{
 	case SMALL:
-	{
-		char smallSize[12] = "small sized";
-		return smallSize;
-	}
+		strcpy_s(outstr, 12, "small sized");
+		break;
 	case MEDIUM:
-	{
-		char mediumSize[13] = "medium sized";
-		return mediumSize;
-	}
+		strcpy_s(outstr, 13, "medium sized");
+		break;
 	case LARGE:
-	{
-		char largeSize[12] = "large sized";
-		return largeSize;
-	}
+		strcpy_s(outstr, 12, "large sized");
+		break;
 	// default:
 	// 	return;
 	}
 }
 
-char* RoomDescriptions::ToString(State state)
+void RoomDescriptions::ToString(char* outstr, State state)
 {
 	switch (state)
 	{
 	case TIDY:
-	{
-		char tidy[5] = "tidy";
-		return tidy;
-	}
+		strcpy_s(outstr, 5, "tidy");
+		break;
 	case CLUTTERED:
-	{
-		char cluttered[10] = "cluttered";
-		return cluttered;
-	}
+		strcpy_s(outstr, 10, "cluttered");
+		break;
 	// default:
 	// 	return;
 	}
 }
 
-char* RoomDescriptions::ToString(Furniture furniture)
+void RoomDescriptions::ToString(char* outstr, Furniture furniture)
 {
 	switch (furniture)
 	{
 	case TABLE:
-	{
-		char table[35] = "small table with two wooden chairs";
-		return table;
-	}
+		strcpy_s(outstr, 35, "small table with two wooden chairs");
+		break;
 	case ARMCHAIR:
-	{
-		char armchair[19] = "luxurious armchair";
-		return armchair;
-	}
+		strcpy_s(outstr, 19, "luxurious armchair");
+		break;
 	case BED:
-	{
-		char bed[16] = "comfortable bed";
-		return bed;
-	}
+		strcpy_s(outstr, 16, "comfortable bed");
+		break;
 	// default:
 	// 	return;
 	}

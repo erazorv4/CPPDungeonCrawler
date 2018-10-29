@@ -10,6 +10,7 @@ public:
 	~GameController();
 
 	void DisplayMap();
+	void MoveHero(int Direction);
 
 	Dungeon dungeon;
 	Map currentMap;

@@ -15,7 +15,7 @@ public:
 
 	void InsertRoomIntoRooms(Room room);
 
-	int* GetSidesList(const int amountOfRooms, Room currentRoom);
+	int* GetSidesList(int &amountOfRooms, Room currentRoom);
 
 
 	Room CheckRoomExists(int x, int y);

@@ -45,8 +45,8 @@ void Map::Generate()
 	startRoom = StartRoom(startingX, startingY);
 	Rooms[0] = startRoom;
 
-	int amountOfRooms = r.Generate(1, 4);
-	int* sidesList = GetSidesList(amountOfRooms, Rooms[0].value);
+	int amountOfRooms = 4;//r.Generate(1, 4);
+	int* sidesList = GetSidesList(amountOfRooms, Rooms[0].value());
 
 	for (int i = 0; i < amountOfRooms; i++)
 	{
@@ -62,7 +62,7 @@ void Map::Generate()
 			currentY = Rooms[0].value().Y + 1;
 			break;
 		case 3:
-			currentX = Rooms[0].value().Y - 1;
+			currentX = Rooms[0].value().X - 1;
 			break;
 		default:
 			break;
@@ -71,14 +71,19 @@ void Map::Generate()
 		Rooms[0].value().Rooms[sidesList[i]] = &nextRoom;
 		InsertRoomIntoRooms(nextRoom);
 	}
-	
+
 
 	// main generation loop
 	for (int i = 1; i < Width * Height; i++)
 	{
+		if (!Rooms[i])
+		{
+			return;
+		}
 		int amountOfRooms = r.Generate(0, 3);
 		int* sidesList = GetSidesList(amountOfRooms, Rooms[i].value());
-
+		currentX = Rooms[i].value().X;
+		currentY = Rooms[i].value().Y;
 		// Generate Rooms
 		for (int t = 0; t < amountOfRooms; t++)
 		{
@@ -94,7 +99,7 @@ void Map::Generate()
 				currentY = Rooms[i].value().Y + 1;
 				break;
 			case 3:
-				currentX = Rooms[i].value().Y - 1;
+				currentX = Rooms[i].value().X - 1;
 				break;
 			default:
 				break;
@@ -108,8 +113,8 @@ void Map::Generate()
 			{
 				nextRoom = Room(currentX, currentY);
 				Rooms[i].value().Rooms[sidesList[t]] = &nextRoom;
+				InsertRoomIntoRooms(nextRoom);
 			}
-			InsertRoomIntoRooms(nextRoom);
 		}
 
 	}
@@ -128,27 +133,53 @@ void Map::InsertRoomIntoRooms(Room room)
 	}
 }
 
-int* Map::GetSidesList(const int amountOfRooms, Room currentRoom)
+int* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
 {
 	Random r = Random();
 	int sidesList[4] = { -1, -1, -1, -1 };
+	int dissallowedSidesList[4] = { -1, -1, -1, -1 };
+
+	if (currentRoom.X <= 1)
+	{
+		dissallowedSidesList[0] = 3;
+		if (amountOfRooms >= 3)
+		{
+			amountOfRooms = amountOfRooms - 1;
+		}
+	}
+	else if (currentRoom.X >= Width)
+	{
+		dissallowedSidesList[0] = 1;
+		if (amountOfRooms >= 3)
+		{
+			amountOfRooms--;
+		}
+	}
+	if (currentRoom.Y <= 1)
+	{
+		dissallowedSidesList[1] = 0;
+		if (amountOfRooms >= 2)
+		{
+			amountOfRooms--;
+		}
+	}
+	else if (currentRoom.Y >= Height)
+	{
+		dissallowedSidesList[1] = 2;
+		if (amountOfRooms >= 2)
+		{
+			amountOfRooms--;
+		}
+	}
+	
 	for (int i = 0; i < amountOfRooms; i++)
 	{
 		// decide where to place room.
 		//TODO Check for bounds.
-		if (currentRoom.X < 1 || currentRoom.X > Width)
-		{
-			std::cerr << "x is not within bounds in GetSidesList." << std::endl << "x: " << currentRoom.X << std::endl << "Width: " << Width;
-			return sidesList;
-		}
-		if (currentRoom.Y < 1 || currentRoom.Y > Height)
-		{
-			std::cerr << "y is not within bounds in GetSidesList." << std::endl << "y: " << currentRoom.Y << std::endl << "Height: " << Height;
-			return sidesList;
-		}
+
 
 		int sideToPlaceRoom = -1;
-		while (sideToPlaceRoom == -1 || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, sidesList))
+		while (sideToPlaceRoom == -1 || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, sidesList) || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, dissallowedSidesList))
 		{
 			sideToPlaceRoom = r.Generate(0, 3);
 		}
@@ -161,12 +192,10 @@ Room Map::CheckRoomExists(int x, int y)
 {
 	if (x < 1 || x > Width)
 	{
-		std::cerr << "x is not within bounds in CheckRoomExists." << std::endl << "x: " << x << std::endl << "Width: " << Width;
 		return Room(0, 0);
 	}
 	if (y < 1 || y > Height)
 	{
-		std::cerr << "y is not within bounds in CheckRoomExists." << std::endl << "y: " << y << std::endl << "Height: " << Height;
 		return Room(0, 0);
 	}
 

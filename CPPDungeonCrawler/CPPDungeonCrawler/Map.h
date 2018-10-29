@@ -13,6 +13,11 @@ public:
 	~Map();
 	void Generate();
 
+	void InsertRoomIntoRooms(Room room);
+
+	int* GetSidesList(const int amountOfRooms);
+
+
 	Room CheckRoomExists(int x, int y);
 	
 	int Width;

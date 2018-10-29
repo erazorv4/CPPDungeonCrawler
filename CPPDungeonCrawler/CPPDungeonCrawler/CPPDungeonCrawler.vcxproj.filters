@@ -84,6 +84,9 @@
     <ClInclude Include="Dungeon.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="ArrayHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -142,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="Dungeon.cpp">
       <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayHelper.cpp">
+      <Filter>Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

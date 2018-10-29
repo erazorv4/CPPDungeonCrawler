@@ -90,6 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="ArrayHelper.h" />
     <ClInclude Include="Dungeon.h" />
     <ClInclude Include="EndRoom.h" />
     <ClInclude Include="Enemies.h" />
@@ -169,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Armor.cpp" />
+    <ClCompile Include="ArrayHelper.cpp" />
     <ClCompile Include="CPPDungeonCrawler.cpp" />
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="EndRoom.cpp" />

@@ -7,7 +7,7 @@ class Map
 {
 public:
 	Map();
-	Map(int width, int height);
+	Map(int width, int height, int floor);
 	~Map();
 	void Generate();
 
@@ -20,6 +20,7 @@ public:
 	Room* CheckRoomExists(int x, int y);
 	
 	int Width;
-	int Height; 
+	int Height;
+	int Floor;
 	std::optional<Room> Rooms[400];
 };

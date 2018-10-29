@@ -11,8 +11,8 @@ Map::Map()
 {
 }
 
-Map::Map(int width, int height)
-	: Width(width), Height(height)
+Map::Map(int width, int height, int floor)
+	: Width(width), Height(height), Floor(floor)
 {
 	Generate();
 }
@@ -40,7 +40,7 @@ void Map::Generate()
 	int currentX = startingX;
 	int currentY = startingY;
 
-	Room startRoom = Room(startingX, startingY);
+	Room startRoom = Room(startingX, startingY, Floor);
 	Rooms[0] = startRoom;
 
 	int amountOfRooms = 4;//r.Generate(1, 4);
@@ -67,7 +67,7 @@ void Map::Generate()
 		default:
 			break;
 		}
-		Room* nextRoom = new Room(currentX, currentY);
+		Room* nextRoom = new Room(currentX, currentY, Floor);
 		startRoom.Rooms[sidesList[i]] = nextRoom;
 		InsertRoomIntoRooms(*nextRoom);
 	}
@@ -112,7 +112,7 @@ void Map::Generate()
 			}
 			else
 			{
-				nextRoom = new Room(currentX, currentY);
+				nextRoom = new Room(currentX, currentY, Floor);
 				Rooms[i].value().Rooms[sidesList[t]] = nextRoom;
 				InsertRoomIntoRooms(*nextRoom);
 			}
@@ -198,11 +198,11 @@ Room* Map::CheckRoomExists(int x, int y)
 {
 	if (x < 1 || x > Width)
 	{
-		return new Room(0, 0);
+		return new Room(0, 0, Floor);
 	}
 	if (y < 1 || y > Height)
 	{
-		return new Room(0, 0);
+		return new Room(0, 0, Floor);
 	}
 
 	for (int i = 0; i < Width * Height; i++)
@@ -216,8 +216,8 @@ Room* Map::CheckRoomExists(int x, int y)
 		}
 		else
 		{
-			return new Room(0, 0);
+			return new Room(0, 0, Floor);
 		}
 	}
-	return new Room(0, 0);
+	return new Room(0, 0, Floor);
 }

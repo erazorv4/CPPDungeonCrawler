@@ -22,6 +22,7 @@ void Hero::Move(int direction)
 	if (CurrentRoom.Rooms[direction])
 	{
 		CurrentRoom = *CurrentRoom.Rooms[direction];
+		CurrentRoom.GenerateContent();
 		X = CurrentRoom.X;
 		Y = CurrentRoom.Y;
 	}

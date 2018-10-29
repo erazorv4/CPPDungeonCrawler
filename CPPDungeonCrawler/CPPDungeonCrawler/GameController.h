@@ -13,7 +13,7 @@ public:
 	void MoveHero(int Direction);
 
 	Dungeon dungeon;
-	Map currentMap;
+	Map* currentMap;
 	Hero hero;
 	int Width;
 	int Height;

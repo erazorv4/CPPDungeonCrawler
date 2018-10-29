@@ -90,6 +90,9 @@
     <ClInclude Include="RoomDescriptions.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="RoomDescriptions.cpp">
       <Filter>Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>Models\Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

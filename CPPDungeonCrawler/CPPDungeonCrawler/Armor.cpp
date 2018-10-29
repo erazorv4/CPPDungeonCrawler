@@ -2,7 +2,8 @@
 #include "Armor.h"
 
 
-Armor::Armor()
+Armor::Armor(int damageReduction)
+	: DamageReduction(damageReduction)
 {
 }
 

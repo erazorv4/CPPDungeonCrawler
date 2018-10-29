@@ -1,12 +1,12 @@
 #pragma once
 #include "EquipableItem.h"
-class Armor :
+class Shield :
 	public EquipableItem
 {
 public:
-	Armor(int damageReduction);
-	~Armor();
+	Shield(int blockChance);
+	~Shield();
 
-	int DamageReduction;
+	int BlockChance;
 };
 

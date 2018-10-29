@@ -8,6 +8,6 @@ public:
 	Dungeon();
 	~Dungeon();
 	int Depth;
-	Map maps[5];
+	//Map maps[5];
 };
 

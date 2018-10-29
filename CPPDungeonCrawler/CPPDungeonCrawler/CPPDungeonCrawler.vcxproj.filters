@@ -93,6 +93,9 @@
     <ClInclude Include="Directions.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>Models\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -150,9 +153,6 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="RoomDescriptions.cpp">
-      <Filter>Enums</Filter>
-    </ClCompile>
-    <ClCompile Include="Directions.cpp">
       <Filter>Enums</Filter>
     </ClCompile>
   </ItemGroup>

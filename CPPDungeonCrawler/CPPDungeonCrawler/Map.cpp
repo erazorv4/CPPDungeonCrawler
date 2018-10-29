@@ -6,6 +6,7 @@
 #include "EndRoom.h"
 #include <iostream>
 #include "ArrayHelper.h"
+#include "GameController.h"
 
 
 Map::Map()
@@ -45,7 +46,7 @@ void Map::Generate()
 	Rooms[0] = startRoom;
 
 	int amountOfRooms = r.Generate(1, 4);
-	int* sidesList = GetSidesList(amountOfRooms);
+	int* sidesList = GetSidesList(amountOfRooms, Rooms[0].value);
 
 	for (int i = 0; i < amountOfRooms; i++)
 	{
@@ -63,6 +64,8 @@ void Map::Generate()
 		case 3:
 			currentX = Rooms[0].value().Y - 1;
 			break;
+		default:
+			break;
 		}
 		Room nextRoom = Room(currentX, currentY);
 		Rooms[0].value().Rooms[sidesList[i]] = &nextRoom;
@@ -74,7 +77,7 @@ void Map::Generate()
 	for (int i = 1; i < Width * Height; i++)
 	{
 		int amountOfRooms = r.Generate(0, 3);
-		int* sidesList = GetSidesList(amountOfRooms);
+		int* sidesList = GetSidesList(amountOfRooms, Rooms[i].value());
 
 		// Generate Rooms
 		for (int t = 0; t < amountOfRooms; t++)
@@ -92,6 +95,8 @@ void Map::Generate()
 				break;
 			case 3:
 				currentX = Rooms[i].value().Y - 1;
+				break;
+			default:
 				break;
 			}
 			Room nextRoom = CheckRoomExists(currentX, currentY);
@@ -123,7 +128,7 @@ void Map::InsertRoomIntoRooms(Room room)
 	}
 }
 
-int* Map::GetSidesList(const int amountOfRooms)
+int* Map::GetSidesList(const int amountOfRooms, Room currentRoom)
 {
 	Random r = Random();
 	int sidesList[4] = { -1, -1, -1, -1 };
@@ -131,6 +136,17 @@ int* Map::GetSidesList(const int amountOfRooms)
 	{
 		// decide where to place room.
 		//TODO Check for bounds.
+		if (currentRoom.X < 1 || currentRoom.X > Width)
+		{
+			std::cerr << "x is not within bounds in GetSidesList." << std::endl << "x: " << currentRoom.X << std::endl << "Width: " << Width;
+			return sidesList;
+		}
+		if (currentRoom.Y < 1 || currentRoom.Y > Height)
+		{
+			std::cerr << "y is not within bounds in GetSidesList." << std::endl << "y: " << currentRoom.Y << std::endl << "Height: " << Height;
+			return sidesList;
+		}
+
 		int sideToPlaceRoom = -1;
 		while (sideToPlaceRoom == -1 || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, sidesList))
 		{
@@ -143,7 +159,7 @@ int* Map::GetSidesList(const int amountOfRooms)
 
 Room Map::CheckRoomExists(int x, int y)
 {
-	/*if (x < 1 || x > Width)
+	if (x < 1 || x > Width)
 	{
 		std::cerr << "x is not within bounds in CheckRoomExists." << std::endl << "x: " << x << std::endl << "Width: " << Width;
 		return Room(0, 0);
@@ -152,7 +168,8 @@ Room Map::CheckRoomExists(int x, int y)
 	{
 		std::cerr << "y is not within bounds in CheckRoomExists." << std::endl << "y: " << y << std::endl << "Height: " << Height;
 		return Room(0, 0);
-	}*/
+	}
+
 	for (int i = 0; i < Width * Height; i++)
 	{
 		if (Rooms[i])

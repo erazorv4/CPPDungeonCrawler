@@ -25,6 +25,9 @@
     <Filter Include="Helpers">
       <UniqueIdentifier>{3793cd18-b568-4637-ad32-60b669095a3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enums">
+      <UniqueIdentifier>{b277d7d3-9d17-4a06-8397-9ea2ed5a80b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -90,6 +93,9 @@
     <ClInclude Include="CPPDungeonCrawler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RoomDescriptions.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="ArrayHelper.cpp">
       <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomDescriptions.cpp">
+      <Filter>Enums</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

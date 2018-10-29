@@ -5,7 +5,7 @@
 #include <iostream>
 #include "ArrayHelper.h"
 #include "GameController.h"
-
+#include "Directions.h"
 
 Map::Map()
 {
@@ -44,13 +44,13 @@ void Map::Generate()
 	Rooms[0] = startRoom;
 
 	int amountOfRooms = 4;//r.Generate(1, 4);
-	int* sidesList = GetSidesList(amountOfRooms, startRoom);
+	Directions::Direction* sidesList = GetSidesList(amountOfRooms, startRoom);
 
 	for (int i = 0; i < amountOfRooms; i++)
 	{
 		currentX = startRoom.X;
 		currentY = startRoom.Y;
-		switch (sidesList[i])
+		switch (static_cast<int>(sidesList[i]))
 		{
 		case 0:
 			currentY = startRoom.Y - 1;
@@ -68,6 +68,7 @@ void Map::Generate()
 			break;
 		}
 		Room* nextRoom = new Room(currentX, currentY);
+		nextRoom->Rooms[Directions::ReverseDirection(sidesList[i])] = &startRoom;
 		startRoom.Rooms[sidesList[i]] = nextRoom;
 		InsertRoomIntoRooms(*nextRoom);
 	}
@@ -82,7 +83,7 @@ void Map::Generate()
 			return;
 		}
 		int amountOfRooms = r.Generate(0, 3);
-		int* sidesList = GetSidesList(amountOfRooms, Rooms[i].value());
+		Directions::Direction* sidesList = GetSidesList(amountOfRooms, Rooms[i].value());
 		currentX = Rooms[i].value().X;
 		currentY = Rooms[i].value().Y;
 		// Generate Rooms
@@ -108,11 +109,13 @@ void Map::Generate()
 			Room* nextRoom = CheckRoomExists(currentX, currentY);
 			if (nextRoom->X != 0 && nextRoom->Y != 0)
 			{
+				nextRoom->Rooms[Directions::ReverseDirection(sidesList[i])] = &Rooms[i].value();
 				Rooms[i].value().Rooms[sidesList[t]] = nextRoom;
 			}
 			else
 			{
 				nextRoom = new Room(currentX, currentY);
+				nextRoom->Rooms[Directions::ReverseDirection(sidesList[i])] = &Rooms[i].value();
 				Rooms[i].value().Rooms[sidesList[t]] = nextRoom;
 				InsertRoomIntoRooms(*nextRoom);
 			}
@@ -134,15 +137,15 @@ void Map::InsertRoomIntoRooms(Room room)
 	}
 }
 
-int* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
+Directions::Direction* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
 {
 	Random r = Random();
-	int sidesList[4] = { -1, -1, -1, -1 };
-	int dissallowedSidesList[4] = { -1, -1, -1, -1 };
+	Directions::Direction sidesList[4] = { Directions::Direction::None, Directions::Direction::None, Directions::Direction::None, Directions::Direction::None };
+	Directions::Direction dissallowedSidesList[2] = { Directions::Direction::None, Directions::Direction::None };
 
 	if (currentRoom.X <= 1)
 	{
-		dissallowedSidesList[0] = 3;
+		dissallowedSidesList[0] = Directions::Direction::Left;
 		if (amountOfRooms >= 3)
 		{
 			amountOfRooms = amountOfRooms - 1;
@@ -150,7 +153,7 @@ int* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
 	}
 	else if (currentRoom.X >= Width)
 	{
-		dissallowedSidesList[0] = 1;
+		dissallowedSidesList[0] = Directions::Direction::Right;
 		if (amountOfRooms >= 3)
 		{
 			amountOfRooms--;
@@ -158,7 +161,7 @@ int* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
 	}
 	if (currentRoom.Y <= 1)
 	{
-		dissallowedSidesList[1] = 0;
+		dissallowedSidesList[1] = Directions::Direction::Up;
 		if (amountOfRooms >= 2)
 		{
 			amountOfRooms--;
@@ -166,25 +169,22 @@ int* Map::GetSidesList(int &amountOfRooms, Room currentRoom)
 	}
 	else if (currentRoom.Y >= Height)
 	{
-		dissallowedSidesList[1] = 2;
+		dissallowedSidesList[1] = Directions::Direction::Down;
 		if (amountOfRooms >= 2)
 		{
 			amountOfRooms--;
 		}
 	}
-	
+
 	for (int i = 0; i < amountOfRooms; i++)
 	{
 		// decide where to place room.
-		//TODO Check for bounds.
-
-
-		int sideToPlaceRoom = -1;
-		while (sideToPlaceRoom == -1 || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, sidesList) || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, dissallowedSidesList))
+		Directions::Direction sideToPlaceRoom = Directions::Direction::None;
+		while (sideToPlaceRoom == Directions::Direction::None || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, sidesList) || ArrayHelper().CheckArrayContainsElement(sideToPlaceRoom, dissallowedSidesList))
 		{
-			sideToPlaceRoom = r.Generate(0, 3);
+			sideToPlaceRoom = static_cast<Directions::Direction>(r.Generate(0, 3));
 		}
-		sidesList[i] = sideToPlaceRoom;
+		sidesList[i] = (Directions::Direction)sideToPlaceRoom;
 	}
 	return sidesList;
 }

@@ -12,7 +12,7 @@ Room::Room()
 Room::Room(int x, int y)
 	: X(x), Y(y)
 {
-	Description = RoomDescriptions::GetRandomDescription();
+	//Description = RoomDescriptions::GetRandomDescription();
 }
 
 Room::~Room()

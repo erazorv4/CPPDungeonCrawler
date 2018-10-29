@@ -153,6 +153,7 @@
     <ClInclude Include="Armor.h" />
     <ClInclude Include="ArrayHelper.h" />
     <ClInclude Include="CPPDungeonCrawler.h" />
+    <ClInclude Include="Directions.h" />
     <ClInclude Include="Dungeon.h" />
     <ClInclude Include="Enemies.h" />
     <ClInclude Include="Enemy.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="ArrayHelper.cpp" />
     <ClCompile Include="CPPDungeonCrawler.cpp" />
+    <ClCompile Include="Directions.cpp" />
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="Enemy.cpp" />

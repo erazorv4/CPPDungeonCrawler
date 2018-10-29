@@ -2,6 +2,7 @@
 
 #include "Room.h"
 #include <optional>
+#include "Directions.h"
 
 class Map
 {
@@ -13,7 +14,7 @@ public:
 
 	void InsertRoomIntoRooms(Room room);
 
-	int* GetSidesList(int &amountOfRooms, Room currentRoom);
+	Directions::Direction* GetSidesList(int &amountOfRooms, Room currentRoom);
 	Room GetStartRoom();
 
 	 

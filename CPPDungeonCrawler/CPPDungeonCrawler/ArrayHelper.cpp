@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ArrayHelper.h"
+#include "Directions.h"
 
 
 ArrayHelper::ArrayHelper()
@@ -11,11 +12,11 @@ ArrayHelper::~ArrayHelper()
 {
 }
 
-bool ArrayHelper::CheckArrayContainsElement(int number, const int intarray[])
+bool ArrayHelper::CheckArrayContainsElement(Directions::Direction direction, Directions::Direction directionarray[])
 {
-	for (int i = 0; i < sizeof(intarray); i++)
+	for (int i = 0; i < sizeof(directionarray); i++)
 	{
-		if (number == intarray[i])
+		if (direction == directionarray[i])
 		{
 			return true;
 		}

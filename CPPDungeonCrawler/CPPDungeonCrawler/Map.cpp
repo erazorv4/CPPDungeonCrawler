@@ -143,6 +143,7 @@ int* Map::GetSidesList(const int amountOfRooms)
 
 Room Map::CheckRoomExists(int x, int y)
 {
+	//HACK uncomment later.
 	/*if (x < 1 || x > Width)
 	{
 		std::cerr << "x is not within bounds in CheckRoomExists." << std::endl << "x: " << x << std::endl << "Width: " << Width;
@@ -169,3 +170,4 @@ Room Map::CheckRoomExists(int x, int y)
 	}
 	return Room(0, 0);
 }
+

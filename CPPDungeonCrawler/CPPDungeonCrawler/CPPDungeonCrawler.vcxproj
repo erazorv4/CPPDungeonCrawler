@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Armor.h" />
     <ClInclude Include="ArrayHelper.h" />
+    <ClInclude Include="CPPDungeonCrawler.h" />
     <ClInclude Include="Dungeon.h" />
     <ClInclude Include="EndRoom.h" />
     <ClInclude Include="Enemies.h" />
